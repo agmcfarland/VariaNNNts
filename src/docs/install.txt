@@ -1,0 +1,29 @@
+
+# package and install
+conda activate testenv2
+
+cd /home/agmcfarland/flu_project/VariaNNNts
+
+yes | pip uninstall VariaNNNts
+
+yes | rm -R ./src//VariaNNNts.egg-info
+
+yes | rm -r ./dist
+
+python -m pip install build
+
+python3 -m build
+
+python3 -m pip install .
+
+VariaNNNts -h
+
+
+python __main__.py -h
+
+
+VariaNNNts \
+--output_directory /home/agmcfarland/flu_project/test_variant_genomes/testout \
+--variant_table /home/agmcfarland/flu_project/test_variant_genomes/insilico_variants.csv \
+--genome_directory /home/agmcfarland/flu_project/test_variant_genomes \
+--overwrite

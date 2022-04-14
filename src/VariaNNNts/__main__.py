@@ -62,15 +62,13 @@ def generate_VariantSequences(args):
 		# reference files and filepaths don't have a suffix so that filetypes can be changed depending on output needed.
 		reference_file = name[0].replace('.fasta','') # no .fasta suffix. Done for consistency
 		variant_file = name[1]
-
 		reference_filepath = pjoin(args.genome_directory,reference_file)
 		variant_filepath = pjoin(args.output_directory,variant_file)
-
-		run_logger.logger.info('{}: making genome\n'.format(variant_file))
 
 		# the segments that will have variants introduced
 		segments_to_modify = group['segment_id'].unique().tolist()
 
+		run_logger.logger.info('{}: making genome\n'.format(variant_file))
 		with open(variant_filepath+'.fasta', 'w') as outfile:
 
 			for record in SeqIO.parse(reference_filepath+'.fasta', 'fasta'):
@@ -136,7 +134,7 @@ def main(args=None):
 	if args is None:
 		args = sys.argv[1:]
 
-	parser = argparse.ArgumentParser()
+	parser = argparse.ArgumentParser(prog = 'VariaNNNts')
 
 	parser.add_argument('--output_directory', type = str, default = pjoin(os.getcwd(),'VariaNNNts_output'), help = 'directory to output files. [./VariaNNNts_output]', metavar = '')
 	parser.add_argument('--variant_table', type = str, default = pjoin(os.getcwd(),'variant_table.csv'), help = 'CSV table with desired variants. [./variant_table.csv]', metavar = '')
@@ -147,7 +145,6 @@ def main(args=None):
 	parser.add_argument('--q_bbt', type = int, default = 40, help='average base quality value. use -1 for a random seed. [40]', metavar = '')
 	parser.add_argument('--qv_bbt', type = int, default = 0, help='standard deviation of variation around q_bbt [0]', metavar = '')
 	parser.add_argument('--adderrors_bbt', type = str, default='f', choices=['t','f'], help='add substitution errors based on quality values [f]', metavar = '')
-
 
 	args = parser.parse_args()
 
