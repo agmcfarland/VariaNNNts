@@ -130,26 +130,23 @@ def generate_VariantSequences(args):
 
 def main(args=None):
 	'''
+	Parse arguments and run module
 	'''
 	if args is None:
 		args = sys.argv[1:]
-
 	parser = argparse.ArgumentParser(prog = 'VariaNNNts')
-
-	parser.add_argument('--output_directory', type = str, default = pjoin(os.getcwd(),'VariaNNNts_output'), help = 'directory to output files. [./VariaNNNts_output]', metavar = '')
-	parser.add_argument('--variant_table', type = str, default = pjoin(os.getcwd(),'variant_table.csv'), help = 'CSV table with desired variants. [./variant_table.csv]', metavar = '')
-	parser.add_argument('--genome_directory', type = str, default = os.getcwd(), help = 'directory containing genomes to generate variants from. [./]', metavar = '')
+	parser.add_argument('-v', '--variant_table', type = str, default = pjoin(os.getcwd(),'variant_table.csv'), help = 'CSV table with desired variants. [./variant_table.csv]', metavar = '')
+	parser.add_argument('-g', '--genome_directory', type = str, default = os.getcwd(), help = 'directory containing genomes to generate variants from. [./]', metavar = '')
+	parser.add_argument('-o', '--output_directory', type = str, default = pjoin(os.getcwd(),'VariaNNNts_output'), help = 'directory to output files. [./VariaNNNts_output]', metavar = '')
 	parser.add_argument('--overwrite', action = 'store_true', default=False, help = 'flag to overwrite all files in the output_directory. [False]')
 	parser.add_argument('--read_count_bbt', type = int, default= 500000, help='number of synthetic read pairs to generate. [500000]', metavar = '')
 	parser.add_argument('--seed_bbt', type = int, default= 5, help='random number generator seed to make synthetic reads. [5]', metavar = '')
 	parser.add_argument('--q_bbt', type = int, default = 40, help='average base quality value. use -1 for a random seed. [40]', metavar = '')
 	parser.add_argument('--qv_bbt', type = int, default = 0, help='standard deviation of variation around q_bbt [0]', metavar = '')
 	parser.add_argument('--adderrors_bbt', type = str, default='f', choices=['t','f'], help='add substitution errors based on quality values [f]', metavar = '')
-
 	args = parser.parse_args()
 
 	generate_VariantSequences(args = args)
-
 
 if __name__ == '__main__':
 	sys.exit(main())
