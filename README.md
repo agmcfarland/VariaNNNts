@@ -29,9 +29,9 @@ optional arguments:
   --adderrors_bbt      add substitution errors based on quality values [f]
   ```
 
-  # Citation 
+ # Citation 
 
-VariaNNNts - Alex McFarland - https://github.com/agmcfarland/VariaNNNts
+[VariaNNNts - Alex McFarland - github.com/agmcfarland/VariaNNNts](https://github.com/agmcfarland/VariaNNNts)
 
 [BBMap - Bushnell B. - sourceforge.net/projects/bbmap/](https://sourceforge.net/projects/bbmap/)
 
