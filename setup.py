@@ -29,9 +29,3 @@ setuptools.setup(
 		'console_scripts': ['VariaNNNts = VariaNNNts.__main__:main'], },
 	package_data={'VariaNNNts' : ['libs/*']},
 	python_requires=">=3.6")
-
-# https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments
-# https://packaging.python.org/tutorials/packaging-projects/
-# https://trstringer.com/easy-and-nice-python-cli/
-# https://github.com/pypa/sampleproject/blob/main/setup.py
-# https://chriswarrick.com/blog/2014/09/15/python-apps-the-right-way-entry_points-and-scripts/
